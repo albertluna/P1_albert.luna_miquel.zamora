@@ -1,7 +1,8 @@
 package LlegirJSON;
 
 import dades_joc.Balls;
-import dades_joc.pokemons.Legend;
+import dades_joc.pokemons.legends.Legend;
+import dades_joc.pokemons.Legends;
 import dades_joc.pokemons.Pokemon;
 
 import java.util.LinkedList;
@@ -24,16 +25,12 @@ public class TransformarDadesJSON {
         return poke;
     }
 
-    public static LinkedList<Legend> legends(LinkedList<Pokemon> pokemons, Legends[] legends) {
-        LinkedList<Legend> llegendaris = new LinkedList<>();
-        for (Pokemon p : pokemons) {
-            for (int j = 0; j < legends.length; j++) {
-                if ((legends[j].getId() == p.getId())&&(legends[j].getKind().equals("legendary"))) {
-                    Legend l = new Legend(p, legends[j]);
-                    llegendaris.add(l);
-                }
-            }
+    public static LinkedList<Legends> legends(Legends[] legends) {
+        LinkedList<Legends> llegendaris = new LinkedList<>();
+        for (int i = 0; legends.length > i; i++) {
+            llegendaris.add(legends[i]);
         }
+
         return llegendaris;
     }
 }

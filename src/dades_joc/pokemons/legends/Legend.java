@@ -1,9 +1,11 @@
-package dades_joc.pokemons;
+package dades_joc.pokemons.legends;
 
 import dades_joc.*;
-import LlegirJSON.*;
+import dades_joc.pokemons.Legends;
+import dades_joc.pokemons.Pokemon;
 
 public class Legend extends Pokemon {
+
     private Gym gym;
 
     public Legend(Pokemon p, Legends l) {

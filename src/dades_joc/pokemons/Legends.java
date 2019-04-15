@@ -1,4 +1,4 @@
-package LlegirJSON;
+package dades_joc.pokemons;
 
 import dades_joc.Gym;
 import dades_joc.SpecialResearch;
@@ -56,5 +56,15 @@ public class Legends {
     }
 
     @Override
-    public String toString() {return "" + id + " " + kind + " " + gym.toString(); }
+    public String toString() {
+        String info = new String();
+        if (kind.equals("mythical")) {
+            info = "" + id + " " + kind + " " + special_research.toString();
+        } else {
+            if (kind.equals("legendary")) {
+                info = "" + id + " " + kind + " " + gym.toString();
+            }
+        }
+        return info;
+    }
 }

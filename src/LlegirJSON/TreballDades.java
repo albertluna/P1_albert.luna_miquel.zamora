@@ -8,7 +8,8 @@ import java.io.FileReader;
 import java.util.LinkedList;
 
 import dades_joc.*;
-import dades_joc.pokemons.Legend;
+import dades_joc.pokemons.legends.Legend;
+import dades_joc.pokemons.Legends;
 import dades_joc.pokemons.Pokemon;
 import informacio.FuncionalitatsPrincipals;
 
@@ -39,7 +40,7 @@ public class TreballDades {
         JsonReader reader2;
 
         try {
-            reader2 = new JsonReader(new FileReader("fitxers/pokemon.json"));
+            reader2 = new JsonReader(new FileReader("fitxers/poke.json"));
             pokemon = gsonPoke.fromJson(reader2, Pokemon[].class);
 
         } catch (FileNotFoundException e) {
@@ -66,13 +67,24 @@ public class TreballDades {
 
         LinkedList<Balls> pokeballs = TransformarDadesJSON.balls(balls);
         LinkedList<Pokemon> pokemons  =TransformarDadesJSON.pokemons(pokemon);
-        LinkedList<Legend> llegendaris = TransformarDadesJSON.legends(pokemons, legends);
+        LinkedList<Legends> llegendaris = TransformarDadesJSON.legends(legends);
 
         fp = new FuncionalitatsPrincipals(pokeballs, pokemons, llegendaris);
+
+        mostrarllegendaris(llegendaris);
+        System.out.println("\n\n\tMistics\n\n");
     }
 
     public void mostrar(int opcio) {
         fp.mostrar(opcio);
+    }
+
+    public void mostrarllegendaris(LinkedList<Legends> ll) {
+        int i = 1;
+        for (Legends l : ll) {
+            System.out.println("Llegendari " + i + ": " + l.toString());
+            i++;
+        }
     }
 }
 

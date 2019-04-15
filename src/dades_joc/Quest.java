@@ -25,4 +25,9 @@ public class Quest {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "\n\tQuest --> " + target + " (target) " + quantity + " (quantity);";
+    }
 }

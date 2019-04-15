@@ -3,9 +3,10 @@ package informacio;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import LlegirJSON.Legends;
 import dades_joc.*;
 import dades_joc.pokemons.*;
+import dades_joc.pokemons.legends.Legend;
+import dades_joc.pokemons.legends.Mythical;
 import menus.*;
 
 public class FuncionalitatsPrincipals {
@@ -13,19 +14,18 @@ public class FuncionalitatsPrincipals {
 
     public Jugador jugador;
     public LinkedList<Balls> balls;
-    //public LinkedList<Legends> legends;
+    public LinkedList<Legends> legends;
     public LinkedList<Legend> llegendaris;
     public LinkedList<Mythical> mitics;
     public LinkedList<Pokemon> pokemon;
 
-    public FuncionalitatsPrincipals(LinkedList<Balls> balls, LinkedList<Pokemon> pokemons, LinkedList<Legend> llegendaris) {
+    public FuncionalitatsPrincipals(LinkedList<Balls> balls, LinkedList<Pokemon> pokemons, LinkedList<Legends> llegendaris) {
 
         this.balls = balls;
         this.pokemon = pokemons;
-        this.llegendaris = llegendaris;
+        this.legends = llegendaris;
 
-        this.pokemon = new LinkedList();
-        //this.legends = new LinkedList<>();
+        this.llegendaris = new LinkedList<>();
         this.mitics = new LinkedList<>();
 
         this.jugador = new Jugador(this.balls);

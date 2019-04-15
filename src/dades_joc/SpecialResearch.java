@@ -32,4 +32,12 @@ public class SpecialResearch {
         this.quests = quests;
     }
 */
+    @Override
+    public String toString() {
+        String retornar = new String();
+        for (int i = 0; i < quests.length; i++) {
+            retornar += "\n\t " + name + " " + quests[i].toString();
+        }
+        return retornar;
+    }
 }

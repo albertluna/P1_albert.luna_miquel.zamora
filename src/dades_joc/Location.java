@@ -25,4 +25,9 @@ public class Location {
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
+
+    @Override
+    public String toString() {
+        return "\n\t longitud: " + longitude + "\n\t latitud: " + latitude + "\n\n\n";
+    }
 }
