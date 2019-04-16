@@ -5,9 +5,12 @@ import dades_joc.pokemons.legends.Legend;
 import dades_joc.pokemons.Pokemon;
 import dades_joc.pokemons.legends.Mythical;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class TransformarDadesJSON {
+
+
 
     public static LinkedList<Balls> balls(Balls[] balls) {
         LinkedList<Balls> pokeballs = new LinkedList();
@@ -30,9 +33,8 @@ public class TransformarDadesJSON {
         for (int i = 0; legends.length > i; i++) {
             if (legends[i].getKind().equals("legendary")) {
                 for (Pokemon p: pokemon) {
-                    if (p.getId()==legends[i].getId()) {
+                    if (p.getId().equals(legends[i].getId())) {
                         Legend l = new Legend(p, legends[i]);
-                        pokemon.remove(p);
                         llegendaris.add(l);
                     }
                 }
@@ -45,11 +47,9 @@ public class TransformarDadesJSON {
         LinkedList<Mythical> mitics = new LinkedList<>();
         for (int i = 0; legends.length > i; i++) {
             if (legends[i].getKind().equals("mythical")) {
-                System.out.println("SI UN MITIC: " + legends[i].toString());
                 for (Pokemon p: pokemon) {
-                    if (p.getId()==legends[i].getId()) {
+                    if (p.getId().equals(legends[i].getId())) {
                         Mythical m = new Mythical(p, legends[i]);
-                        pokemon.remove(p);
                         mitics.add(m);
                     }
                 }

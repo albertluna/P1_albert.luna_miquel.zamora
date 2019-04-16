@@ -68,22 +68,17 @@ public class TreballDades {
         LinkedList<Legend> llegendaris = TransformarDadesJSON.legends(pokemons, legends);
         LinkedList<Mythical> mitics = TransformarDadesJSON.mistics(pokemons, legends);
 
-        fp = new FuncionalitatsPrincipals(pokeballs, pokemons, llegendaris, mitics);
+        //eliminarRepetits(pokemons, llegendaris, mitics);
 
-        mostrarPokemons(llegendaris);
+        fp = new FuncionalitatsPrincipals(pokeballs, pokemons, llegendaris, mitics);
     }
 
     public void mostrar(int opcio) {
         fp.mostrar(opcio);
     }
-
-    private void mostrarPokemons(LinkedList<Legend> poke) {
-        int i = 1;
-        for (Pokemon p: poke) {
-            System.out.println("Pokemon " + i + ": " + p.toString());
-            i++;
-        }
-    }
-
+/*
+    public void eliminarRepetits(LinkedList<Pokemon> poke, LinkedList<Legend> llegendari, LinkedList<Mythical> mitic) {
+        poke.
+    }*/
 }
 
