@@ -1,0 +1,22 @@
+[
+{
+    "name":"pokeball",
+    "capture_rate": 5,
+    "price": 50
+},
+{
+    "name":"superball",
+    "capture_rate": 30,
+    "price": 100
+},
+{
+    "name":"ultraball",
+    "capture_rate": 60,
+    "price": 150
+},
+{
+    "name":"masterball",
+    "capture_rate": 256,
+    "price": 1000
+}
+]

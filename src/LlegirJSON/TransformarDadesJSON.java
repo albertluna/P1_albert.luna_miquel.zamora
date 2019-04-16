@@ -45,6 +45,7 @@ public class TransformarDadesJSON {
         LinkedList<Mythical> mitics = new LinkedList<>();
         for (int i = 0; legends.length > i; i++) {
             if (legends[i].getKind().equals("mythical")) {
+                System.out.println("SI UN MITIC: " + legends[i].toString());
                 for (Pokemon p: pokemon) {
                     if (p.getId()==legends[i].getId()) {
                         Mythical m = new Mythical(p, legends[i]);
