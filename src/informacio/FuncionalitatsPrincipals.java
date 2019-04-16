@@ -14,19 +14,17 @@ public class FuncionalitatsPrincipals {
 
     public Jugador jugador;
     public LinkedList<Balls> balls;
-    public LinkedList<Legends> legends;
     public LinkedList<Legend> llegendaris;
     public LinkedList<Mythical> mitics;
     public LinkedList<Pokemon> pokemon;
 
-    public FuncionalitatsPrincipals(LinkedList<Balls> balls, LinkedList<Pokemon> pokemons, LinkedList<Legends> llegendaris) {
+    public FuncionalitatsPrincipals(LinkedList<Balls> balls, LinkedList<Pokemon> pokemons, LinkedList<Legend> llegendaris, LinkedList<Mythical> mitics) {
 
         this.balls = balls;
         this.pokemon = pokemons;
-        this.legends = llegendaris;
 
-        this.llegendaris = new LinkedList<>();
-        this.mitics = new LinkedList<>();
+        this.llegendaris = llegendaris;
+        this.mitics = mitics;
 
         this.jugador = new Jugador(this.balls);
 }

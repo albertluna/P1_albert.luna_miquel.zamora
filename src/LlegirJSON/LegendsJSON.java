@@ -1,19 +1,14 @@
-package dades_joc.pokemons;
+package LlegirJSON;
 
 import dades_joc.Gym;
 import dades_joc.SpecialResearch;
 
-public class Legends {
-
+public class LegendsJSON {
     //Creació atributs
     private Integer id;
     private String kind;
     private Gym gym;
     private SpecialResearch special_research;
-
-    public double distanciaManhattan(double latitud, double longitud) {
-        return Math.abs(latitud - gym.getLocation().getLatitude()) + Math.abs(longitud - gym.getLocation().getLongitude());
-    }
 
     //Getter
     public Integer getId() {
@@ -68,3 +63,4 @@ public class Legends {
         return info;
     }
 }
+

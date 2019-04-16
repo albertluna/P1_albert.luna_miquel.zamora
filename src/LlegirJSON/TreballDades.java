@@ -8,9 +8,9 @@ import java.io.FileReader;
 import java.util.LinkedList;
 
 import dades_joc.*;
-import dades_joc.pokemons.legends.Legend;
-import dades_joc.pokemons.Legends;
 import dades_joc.pokemons.Pokemon;
+import dades_joc.pokemons.legends.Legend;
+import dades_joc.pokemons.legends.Mythical;
 import informacio.FuncionalitatsPrincipals;
 
 
@@ -19,7 +19,7 @@ public class TreballDades {
     private FuncionalitatsPrincipals fp;
     private Balls[] balls;
     private Pokemon[] pokemon;
-    private Legends[] legends;
+    private LegendsJSON[] legends;
 
     //Metode per llegir gel fitxer JSON Balls
     public void llegirJsonBalls() {
@@ -55,36 +55,35 @@ public class TreballDades {
 
         try {
             reader3 = new JsonReader(new FileReader("fitxers/legends.json"));
-            legends = gsonLegends.fromJson(reader3, Legends[].class);
+            legends = gsonLegends.fromJson(reader3, LegendsJSON[].class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        for(int i = 0; i < legends.length; i++) {
         }
     }
 
     public void actualitzar() {
 
         LinkedList<Balls> pokeballs = TransformarDadesJSON.balls(balls);
-        LinkedList<Pokemon> pokemons  =TransformarDadesJSON.pokemons(pokemon);
-        LinkedList<Legends> llegendaris = TransformarDadesJSON.legends(legends);
+        LinkedList<Pokemon> pokemons = TransformarDadesJSON.pokemons(pokemon);
+        LinkedList<Legend> llegendaris = TransformarDadesJSON.legends(pokemons, legends);
+        LinkedList<Mythical> mitics = TransformarDadesJSON.mistics(pokemons, legends);
 
-        fp = new FuncionalitatsPrincipals(pokeballs, pokemons, llegendaris);
+        fp = new FuncionalitatsPrincipals(pokeballs, pokemons, llegendaris, mitics);
 
-        mostrarllegendaris(llegendaris);
-        System.out.println("\n\n\tMistics\n\n");
+        mostrarPokemons(llegendaris);
     }
 
     public void mostrar(int opcio) {
         fp.mostrar(opcio);
     }
 
-    public void mostrarllegendaris(LinkedList<Legends> ll) {
+    private void mostrarPokemons(LinkedList<Legend> poke) {
         int i = 1;
-        for (Legends l : ll) {
-            System.out.println("Llegendari " + i + ": " + l.toString());
+        for (Pokemon p: poke) {
+            System.out.println("Pokemon " + i + ": " + p.toString());
             i++;
         }
     }
+
 }
 

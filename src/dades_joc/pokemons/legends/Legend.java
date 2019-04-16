@@ -1,15 +1,16 @@
 package dades_joc.pokemons.legends;
 
+import LlegirJSON.LegendsJSON;
 import dades_joc.*;
-import dades_joc.pokemons.Legends;
 import dades_joc.pokemons.Pokemon;
 
 public class Legend extends Pokemon {
 
     private Gym gym;
 
-    public Legend(Pokemon p, Legends l) {
-
+    public Legend(Pokemon p, LegendsJSON l) {
+        super(p.getId(), p.getName(), p.getCaptureRate());
+        gym = l.getGym();
     }
 
     public double distanciaManhattan(double latitud, double longitud) {
