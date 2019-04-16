@@ -12,5 +12,4 @@ public class Mythical extends Pokemon {
         super(p.getId(), p.getName(), p.getCaptureRate());
         sr = l.getSpecialResearch();
     }
-
 }

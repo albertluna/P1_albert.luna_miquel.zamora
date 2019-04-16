@@ -4,6 +4,7 @@ import dades_joc.Gym;
 import dades_joc.SpecialResearch;
 
 public class LegendsJSON {
+
     //Creació atributs
     private Integer id;
     private String kind;
@@ -15,19 +16,9 @@ public class LegendsJSON {
         return id;
     }
 
-    //Setter
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     //Getter
     public String getKind() {
         return kind;
-    }
-
-    //Setter
-    public void setKind(String kind) {
-        this.kind = kind;
     }
 
     //Getter
@@ -35,19 +26,9 @@ public class LegendsJSON {
         return gym;
     }
 
-    //Setter
-    public void setGym(Gym gym) {
-        this.gym = gym;
-    }
-
     //Getter
     public SpecialResearch getSpecialResearch() {
         return special_research;
-    }
-
-    //Setter
-    public void setSpecialResearch(SpecialResearch specialResearch) {
-        this.special_research = specialResearch;
     }
 
     @Override

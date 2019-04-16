@@ -43,7 +43,7 @@ public class FuncionalitatsPrincipals {
                 //Mostrem les monedes que té actualment el jugador
                 System.out.println("\nTeniu " + jugador.getMonedes() + " monedes.");
 
-                //Mentres no es seleccioni l'opció e)
+                //Mentre no es seleccioni l'opció e)
                 menu2.mostrarMenu(balls);
 
                 //Demanem a l'usuari l'opció fins que sigui un valor vàlid
