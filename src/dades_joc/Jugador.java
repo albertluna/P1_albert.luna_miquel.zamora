@@ -46,7 +46,7 @@ public class Jugador {
         int monedes_temporal = -1;
 
         //Demanem a l'usuari quantes monedes vol comprar
-        System.out.println("\nQuantes monedes vols comprar?");
+        System.out.println("\nQuantes monedes vol comprar?");
         monedes_temporal = scanner.nextInt();
 
         //Si l'usuari introduit un número de monedes vàlid (positiu), el programa segueix

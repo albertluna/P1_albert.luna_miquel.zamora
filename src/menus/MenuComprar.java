@@ -13,21 +13,26 @@ public class MenuComprar {
         scanner = new Scanner(System.in);
     }
 
-    public void mostrarMenu(LinkedList<Balls> balls) {
+    public int mostrarMenu(LinkedList<Balls> balls) {
         int index = 97;
 
         System.out.println("\nPokéballs disponibles:");
 
         for (Balls b : balls) {
-            System.out.println("\t" + (char)index + ") " + b.getName() + ": " + b.getPrice() + " monedes");
+            String nom = b.getName();   //Obtenim el nom de la ball
+            String aux = nom.substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula
+            String ball = aux + nom.substring(1);   //Ajuntem la primera lletra majúscula amb la resta de la paraula per obtenir el nom sencer
+            System.out.println("\t" + (char)index + ") " + ball + ": " + b.getPrice() + " monedes");
             index++;
         }
 
         System.out.println("\n\t" + (char)index + ") Sortir sense comprar\n");
+
+        return index;
     }
 
-    public boolean sortir() {
-        if (opcio2 >= 'a' && opcio2 < 'e') { return true; }
+    public boolean sortir(int index) {
+        if (opcio2 >= 'a' && opcio2 < (char)index) { return true; }
         else { return false; }
     }
 
@@ -40,8 +45,8 @@ public class MenuComprar {
     }
 
     //Comprovar que s'hagi introduit un valor vàlid
-    public boolean comprovar() {
-        if (opcio2 >= 'a' && opcio2 <= 'e') { return true; }
+    public boolean comprovar(int index) {
+        if (opcio2 >= 'a' && opcio2 <= (char)index) { return true; }
         else { return false; }
     }
 
@@ -53,4 +58,5 @@ public class MenuComprar {
         temporal = scanner.nextInt();
         return temporal;
     }
+
 }

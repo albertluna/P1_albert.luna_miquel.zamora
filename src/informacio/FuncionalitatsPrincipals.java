@@ -43,21 +43,23 @@ public class FuncionalitatsPrincipals {
                 //Mostrem les monedes que té actualment el jugador
                 System.out.println("\nTeniu " + jugador.getMonedes() + " monedes.");
 
-                //Mentres no es seleccioni l'opció e)
-                menu2.mostrarMenu(balls);
+                //Mentres no es seleccioni l'opció de sortir mostrem el menú
+                int index = menu2.mostrarMenu(balls);
 
                 //Demanem a l'usuari l'opció fins que sigui un valor vàlid
                 do {
                     menu2.llegirOpcio();
-                } while (!menu2.comprovar());
+                } while (!menu2.comprovar(index));
 
                 //Si l'usuari ha seleccionat una opció que no sigui la de sortir, segueix el programa
-                if (menu2.sortir()) {
+                if (menu2.sortir(index)) {
 
                     int quantitat = menu2.quantitatComprar();
                     int opcio2 = menu2.getOpcio();
+                    //Si vol comprar una quantitat vàlida, actualitzem les seves dades
                     if (quantitat >= 0) {
                         jugador.actualitzarPokeballs(quantitat, balls, opcio2);
+                    //Si vol comprar una quantitat no vàlida, no actualitzem les seves dades
                     } else {
                         System.out.println("\nCal introduir un nombre estrictament positiu.");
                     }
@@ -69,7 +71,10 @@ public class FuncionalitatsPrincipals {
                 System.out.println("\nInventari");
                 for (int i = 0; i < balls.size(); i++) {
                     if (jugador.getPokeballs(i) > 0) {
-                        System.out.println("\t- " + jugador.getPokeballs(i) + "x " + balls.get(i).getName());
+                        String nom = balls.get(i).getName();   //Obtenim el nom de la ball
+                        String aux = nom.substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula
+                        String ball = aux + nom.substring(1);   //Ajuntem la primera lletra majúscula amb la resta de la paraula per obtenir el nom sencer
+                        System.out.println("\t- " + jugador.getPokeballs(i) + "x " + ball);
                     }
                 }
                 break;
