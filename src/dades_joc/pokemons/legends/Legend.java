@@ -36,7 +36,7 @@ public class Legend extends Pokemon {
         }
         return trobat;
     }
-    public Gym getGym() {
-        return gym;
-    }
+
+    //Getter
+    public Gym getGym() { return gym; }
 }
