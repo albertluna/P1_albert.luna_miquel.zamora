@@ -15,6 +15,9 @@ public class Mythical extends Pokemon {
         sr = l.getSpecialResearch();
     }
 
+    //Getter
+    public SpecialResearch getSr() { return sr; }
+
     public static boolean isMitic(int nPokemon, LinkedList<Mythical> mitics) {
         boolean trobat = false;
         for (Mythical m: mitics) {
@@ -24,4 +27,5 @@ public class Mythical extends Pokemon {
         }
         return trobat;
     }
+
 }

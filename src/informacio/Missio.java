@@ -8,50 +8,106 @@ import dades_joc.pokemons.legends.*;
 
 public class Missio {
 
-    public static void ferMissio(Jugador jugador, LinkedList<Balls> balls, LinkedList<Pokemon> poke, LinkedList<Legend> llegendaris,
-                                 LinkedList<Mythical> mitics) {
-        for (int i = 5; i > 0; i--) {
-            System.out.println("Quin Pokémon vol buscar?");
-            Scanner llegir = new Scanner(System.in);
-            int nPokemon = llegir.nextInt();
-            if (!Pokemon.isInList(poke, nPokemon)) {
-                System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).");
+    private static boolean trobat = false;
+
+    public static boolean isTrobat() { return trobat; }
+
+    //Funció per determinar quin pokemon es vol buscar en la missio
+    public static int trobarPokemon(LinkedList<Pokemon> poke, LinkedList<Legend> llegendaris, LinkedList<Mythical> mitics) {
+        System.out.println("\nQuin Pokémon vol buscar?");
+
+        //Es llegeix el id del pokemon que es vol buscar
+        Scanner llegir = new Scanner(System.in);
+        int nPokemon = llegir.nextInt();
+
+        //Es determina si el pokemon existeix en el sistema
+        if (!Pokemon.isInList(poke, nPokemon)) {
+            System.out.println("\nHo sentim, però aquest Pokémon no existeix (encara).");
+        }
+        else {
+            //Es mira si és un pokemon salvatge
+            if (Mythical.isMitic(nPokemon, mitics) || Legend.isLlegendari(nPokemon, llegendaris)) {
+                System.out.println("\nHo sentim, però aquest Pokémon és mític i no apareix salvatge");
             } else {
-                if (Mythical.isMitic(nPokemon, mitics) || Legend.isLlegendari(nPokemon, llegendaris)) {
-                    System.out.println("Ho sentim, però aquest Pokémon és mític i no apareix salvatge");
-                } else {
-                    System.out.println("Queden " + jugador.quantitatPokeballs() + " Pokéballs i " + i +
-                            "/5 intents. Quin tipus de Pokéball vol fer servir?");
-                    Scanner llegire = new Scanner(System.in);
-                    String bola = llegire.nextLine();
-                    boolean bolaCorrecta = false;
-                    int bolaGastada = 0;
+                trobat = true;
+            }
+        }
+        return nPokemon;
+    }
 
-                    for (int k = 0; k < balls.size(); k++) {
-                        if(bola.equals(balls.get(k).getName())&&jugador.quantitatPokeballs()!= 0) {
-                            bolaCorrecta = true;
-                            jugador.setPokeballs(k);
-                            bolaGastada = k;
-                            k = 4;
-                        }
+    //Funció per fer l'acció de capturar un pokemon
+    public static void ferMissio(Jugador jugador, LinkedList<Balls> balls, Pokemon poke, LinkedList<Mythical> mitics) {
+
+        System.out.println("\nUn " + poke.getName() + " salvatge aparegué!");
+
+        for (int i = 5; i > 0; i--) {
+            System.out.println("\nQueden " + jugador.quantitatPokeballs() + " Pokéballs i " + i +
+                    "/5 intents. Quin tipus de Pokéball vol fer servir?");
+
+            //Funció que extreu la bola que el jugador utilitzarà per fer la captura
+            Balls bolaGastada = escollirPokeball(balls, jugador);
+
+            //Càlcul per saber si ha capturat el pokemon
+            if(poke.capture(bolaGastada)) {
+                System.out.println("\nEl " + poke.getName() + " ha estat capturat!");
+                trobat = false;
+                i = 0;
+                actualitzarRecercaEspecial(jugador,poke, mitics);
+            } else {
+                System.out.println("\nLa " + bolaGastada.getName() + " ha fallat!");
+            }
+        }
+    }
+
+    //Funció perquè el jugador esculli una pokeball
+    private static Balls escollirPokeball(LinkedList<Balls> balls, Jugador jugador) {
+
+        boolean bolaCorrecta = false;
+        Balls bolaGastada = new Balls();
+
+        //Bucle que no es surt fins que el jugador esculli una pokeball que tingui
+        while (!bolaCorrecta) {
+
+            //Es llegeix el nom de la pokeball
+            Scanner llegire = new Scanner(System.in);
+            String bola = llegire.nextLine();
+
+            //Es comprova si el jugador te la pokeball
+            for (int k = 0; k < balls.size(); k++) {
+                //El nom es correcte
+                if (bola.equals(balls.get(k).getName()) && jugador.quantitatPokeballs() != 0) {
+                    //En té
+                    if (jugador.getPokeballs(k) != 0) {
+                        bolaCorrecta = true;
+                        jugador.setPokeballs(k);
+                        bolaGastada = balls.get(k);
+                        k = balls.size();
+                    } else {
+                        //No en té cap
+                        System.out.println("\nNo li queden pokeballs del tipus " + balls.get(k).getName() +
+                                ". Quin tipus de Pokéball vol fer servir?");
+                        k = balls.size();
                     }
-                    //Continua la captura si el jugador ha introduit una bola que existeix i en disposa
-                    if (bolaCorrecta) {
-
-                        //calcul per saber si ha capturat el pokemon
-                        if(poke.get(nPokemon-1).capture(balls.get(bolaGastada))) {
-                            System.out.println("El " + poke.get(nPokemon-1).getName() + " ha estat capturat!");
-                        } else {
-                            System.out.println("La " + balls.get(bolaGastada).getName() + " ha fallat!");
-                        }
-                        jugador.setPokeballs(bolaGastada);
-                        //Controla si el jugador ha introduit una bola que no existeix en el sistema
-                    } else{
-                        System.out.println("Aquest tipus no existeix. Quin tipus de Pokéball vol fer servir?");
-                        i++;
+                } else {
+                    //Introdueix un nom d'una pokeball que no existeix
+                    if (k == balls.size()-1 && !bolaCorrecta) {
+                        System.out.println("\nAquest tipus no existeix. Quin tipus de " +
+                                "Pokéball vol fer servir?");
                     }
                 }
             }
         }
+        return bolaGastada;
+    }
+
+    private static void actualitzarRecercaEspecial(Jugador j, Pokemon poke, LinkedList<Mythical> mitics) {
+        j.afegirCaptura(poke);
+        for (Mythical m: mitics) {
+            if (m.getSr().afegirPokemon(poke)) {
+                System.out.println("\nMissió de captura completada!");
+                System.out.println("\nRecerca Especial completada: Se t'apareix el mític " + m.getName() + "!");
+            }
+        }
+
     }
 }

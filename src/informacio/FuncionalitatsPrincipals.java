@@ -72,6 +72,16 @@ public class FuncionalitatsPrincipals {
                 System.out.println("\nInventari");
                 for (int i = 0; i < balls.size(); i++) {
                     if (jugador.getPokeballs(i) > 0) {
+
+
+                        /*
+                        *
+                        *
+                        *
+                        *       Miqueeeeel!! Proposo fer lo de la majuscula com una funcio
+                        *       perque s'ha de fer servir molts més cops :)
+                        *
+                        */
                         String nom = balls.get(i).getName();   //Obtenim el nom de la ball
                         String aux = nom.substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula
                         String ball = aux + nom.substring(1);   //Ajuntem la primera lletra majúscula amb la resta de la paraula per obtenir el nom sencer
@@ -81,13 +91,12 @@ public class FuncionalitatsPrincipals {
                 break;
 
             case 4:
-
-                if (jugador.quantitatPokeballs() == 0) {
+                int nPokemon = 0;
+                if (jugador.quantitatPokeballs() == 0)
                     System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
-                } else {
-                    Missio.ferMissio(jugador, balls, pokemon, llegendaris, mitics);
-
-
+                else {
+                    while (!Missio.isTrobat()) nPokemon = Missio.trobarPokemon(pokemon, llegendaris, mitics);
+                    Missio.ferMissio(jugador, balls, pokemon.get(nPokemon-1), mitics);
                 }
                 break;
 
@@ -112,7 +121,7 @@ public class FuncionalitatsPrincipals {
                 //Càlcul distància manhattan
 
                 Gym gymProper = jugador.gimnasProper(latitud, longitud, llegendaris);
-                System.out.println("\nGimnas mes proper: " + gymProper.getName());
+                System.out.println("\nGimnàs més proper: " + gymProper.getName());
 
 /*
                 for (Legend l : llegendaris) {
@@ -134,20 +143,39 @@ public class FuncionalitatsPrincipals {
                     }
                 }
                 System.out.println("\nEl boss de raid " + pokemon.get(nPokemon).getName() + " us repta!");
-                Missio.ferMissio(jugador, balls, pokemon, aprop);*/
-                /*
+                Missio.ferMissio(jugador, balls, pokemon, aprop);
                 break;
+                */
             case 6:
+
+                System.out.println("\nRecerques Especials:");
+                //String info;
+                for (Mythical m: mitics) {
+                    if (!(m.getSr().getPercentatge() == 100 || m.getSr().getPercentatge() == 0.0)) {
+                        System.out.println("\n\n\t-" + m.getSr().getName() + " (" + m.getName() + "):");
+                        for (Quest q: m.getSr().getQuests()) {
+                            System.out.println("\t\t* Capturar " + getPokemon(q.getTarget()).getName() + ": " +  q.getCapturated()
+                                    + "/" + q.getQuantity() + " (" + q.getPercentatge() + "%)");
+                        }
+                    }
+                }
                 break;
             case 7:
                 break;
             case 8:
                 break;
 
-        */
         }
-
     }
 
+    public Pokemon getPokemon(int id) {
+        Pokemon trobat = null;
+        for (Pokemon p: pokemon) {
+            if (p.getId().equals(id)){
+                trobat = p;
+            }
+        }
+        return trobat;
+    }
 }
 

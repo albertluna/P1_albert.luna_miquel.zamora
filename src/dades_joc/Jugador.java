@@ -1,5 +1,6 @@
 package dades_joc;
 
+import dades_joc.pokemons.Pokemon;
 import dades_joc.pokemons.legends.Legend;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class Jugador {
     private int[] pokeballs;
     private double latitud;
     private double longitud;
+    private LinkedList<Pokemon> capturats;
 
     //Constructor
     public Jugador(LinkedList<Balls> balls) {
@@ -29,6 +31,7 @@ public class Jugador {
         }
         latitud = 0;
         longitud = 0;
+        capturats = new LinkedList<>();
     }
 
 
@@ -137,4 +140,5 @@ public class Jugador {
     public void setPokeballs(int posicio) { pokeballs[posicio]--; }
     public double getLatitud() { return latitud; }
     public double getLongitud() { return longitud; }
+    public void afegirCaptura(Pokemon p) { capturats.add(p);}
 }

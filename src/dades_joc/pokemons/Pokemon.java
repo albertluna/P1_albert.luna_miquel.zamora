@@ -19,7 +19,7 @@ public class Pokemon {
 
 
     public boolean capture(Balls ball) {
-        System.out.println("HOLA    " + this.capture_rate);
+        System.out.println("HOLA    " + ball.getCaptureRate() + "\t-->"+ this.capture_rate);
         double probabilitat = (((double)ball.getCaptureRate() / 256) + ((double) capture_rate / 2048));
         System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
@@ -41,19 +41,9 @@ public class Pokemon {
         return id;
     }
 
-    //Setter
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     //Getter
     public String getName() {
         return name;
-    }
-
-    //Setter
-    public void setName(String name) {
-        this.name = name;
     }
 
     //Getter

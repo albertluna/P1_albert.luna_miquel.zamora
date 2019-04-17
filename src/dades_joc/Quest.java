@@ -5,15 +5,13 @@ public class Quest {
     //Creació atributs
     private Integer target;
     private Integer quantity;
+    private int capturated = 0;
+
+    public float getPercentatge() { return ((float)capturated/(float)quantity)*100;}
 
     //Getter
     public Integer getTarget() {
         return target;
-    }
-
-    //Setter
-    public void setTarget(Integer target) {
-        this.target = target;
     }
 
     //Getter
@@ -21,10 +19,11 @@ public class Quest {
         return quantity;
     }
 
+    //Getter
+    public int getCapturated() { return capturated; }
+
     //Setter
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+    public void setCapturated() { this.capturated ++; }
 
     @Override
     public String toString() {
