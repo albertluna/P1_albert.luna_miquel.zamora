@@ -108,6 +108,5 @@ public class Missio {
                 System.out.println("\nRecerca Especial completada: Se t'apareix el mític " + m.getName() + "!");
             }
         }
-
     }
 }
