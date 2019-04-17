@@ -1,5 +1,6 @@
 package dades_joc;
 
+import dades_joc.pokemons.legends.Legend;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -150,6 +151,22 @@ public class Jugador {
         System.out.println("\nLongitud actual?");
         longitud = scanner.nextDouble(); //Llegim a quina latitud es troba el jugador
         return longitud;
+    }
+
+    //Mètode calcular el gimnàs més proper al jugador a partir de la Distancia Manhattan
+    public Gym gimnasProper (double latitud, double longitud, LinkedList<Legend> llegendaris) {
+        double distManhattanMin = Double.MAX_VALUE;
+        double aux;
+        Gym gymProper = new Gym();
+
+        for (Legend l : llegendaris) {
+            aux = l.distanciaManhattan(latitud, longitud);
+            if (aux < distManhattanMin) {
+                distManhattanMin = aux;
+                gymProper = l.getGym();
+            }
+        }
+        return gymProper;
     }
 
     //Getters

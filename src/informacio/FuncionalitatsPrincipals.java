@@ -1,5 +1,6 @@
 package informacio;
 
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -112,16 +113,14 @@ public class FuncionalitatsPrincipals {
                 while (longitud < -180 || longitud > 180) {
                     longitud = jugador.longitudJugador();
                     //Si longitud no vàlida, mostrem error
-                    if (longitud < -180 || latitud > 180) { System.out.println("Introdueixi una latitud entre -180 i 180."); }
+                    if (longitud < -180 || longitud > 180) { System.out.println("Introdueixi una longitud entre -180 i 180."); }
                 }
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Càlcul distància manhattan
 
-                double distManMax = 0;
-                double distMan = llegendaris.getFirst().distanciaManhattan(latitud, longitud);
-                System.out.println("Fins aqui hem arribat.");
-                int aprop = 0;
+                Gym gymProper = jugador.gimnasProper(latitud, longitud, llegendaris);
+                System.out.println("\nGimnas mes proper: " + gymProper.getName());
 
 /*
                 for (Legend l : llegendaris) {

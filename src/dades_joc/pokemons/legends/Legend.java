@@ -24,4 +24,7 @@ public class Legend extends Pokemon {
         System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
     }
+
+    //Getter
+    public Gym getGym() { return gym; }
 }
