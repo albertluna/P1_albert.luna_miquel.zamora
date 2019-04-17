@@ -35,6 +35,7 @@ public class Missio {
                             k = 4;
                         }
                     }
+
                     //Continua la captura si el jugador ha introduit una bola que existeix i en disposa
                     if (bolaCorrecta) {
 
