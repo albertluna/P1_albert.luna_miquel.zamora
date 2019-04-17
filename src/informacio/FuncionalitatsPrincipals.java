@@ -84,17 +84,9 @@ public class FuncionalitatsPrincipals {
                 if (jugador.quantitatPokeballs() == 0) {
                     System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
                 } else {
-                    System.out.println("Quin Pokémon vol buscar?");
-                    Scanner llegir = new Scanner(System.in);
-                    int nPokemon = llegir.nextInt();
-                    if(nPokemon > 802 || nPokemon < 1) {
-                        System.out.println("Ho sentim, però aquest Pokémon no existeix (encara).");
-                    } else {
-                        System.out.println("Un " + pokemon.get(nPokemon-1).getName() + " salvatge aparegué!");
-                        //String bola = new String("pussy");
-                        Missio.ferMissio(jugador, balls, pokemon.get(nPokemon-1));
+                    Missio.ferMissio(jugador, balls, pokemon, llegendaris, mitics);
 
-                    }
+
                 }
                 break;
 

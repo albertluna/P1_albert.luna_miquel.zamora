@@ -93,51 +93,7 @@ public class Jugador {
         }
         else { System.out.print("\nHo sentim, però no disposa de suficients monedes.\n"); }
     }
-    /*
-    //Mètode per actualitzar les Pokeballs que té l'usuari
-    public void actualitzarPokeballs (int quantitat) {
-        //Si té suficientes monedes, actualitzem el número de Pokeballs
-        if (quantitat * 50 <= monedes) {
-            pokeballs = pokeballs + quantitat;
-            monedes = monedes - (quantitat * 50);
-            System.out.println("\nS'han afegit " + quantitat + " Pokeballs al seu compte a canvi de " + (quantitat * 50) + " monedes.");
-        }
-        else { System.out.print("\nHo sentim, però no disposa de suficients monedes.\n"); }
-    }
 
-    //Mètode per actualitzar les Superballs que té l'usuari
-    public void actualitzarSuperballs (int quantitat) {
-        //Si té suficientes monedes, actualitzem el número de Superballs
-        if (quantitat * 100 <= monedes) {
-            superballs = superballs + quantitat;
-            monedes = monedes - (quantitat * 100);
-            System.out.println("\nS'han afegit " + quantitat + " Superballs al seu compte a canvi de " + (quantitat * 100) + " monedes.");
-        }
-        else { System.out.print("\nHo sentim, però no disposa de suficients monedes.\n"); }
-    }
-
-    //Mètode per actualitzar les Ultraballs que té l'usuari
-    public void actualitzarUltraballs (int quantitat) {
-        //Si té suficientes monedes, actualitzem el número de Ultraballs
-        if (quantitat * 150 <= monedes) {
-            ultraballs = ultraballs + quantitat;
-            monedes = monedes - (quantitat * 150);
-            System.out.println("\nS'han afegit " + quantitat + " Ultraballs al seu compte a canvi de " + (quantitat * 150) + " monedes.");
-        }
-        else { System.out.print("\nHo sentim, però no disposa de suficients monedes.\n"); }
-    }
-
-    //Mètode per actualitzar les Masterballs que té l'usuari
-    public void actualitzarMasterballs (int quantitat) {
-        //Si té suficientes monedes, actualitzem el número de Masterballs
-        if (quantitat * 1000 <= monedes) {
-            masterballs = masterballs + quantitat;
-            monedes = monedes - (quantitat * 1000);
-            System.out.println("\nS'han afegit " + quantitat + " Masterballs al seu compte a canvi de " + (quantitat*1000) + " monedes.");
-        }
-        else { System.out.print("\nHo sentim, però no disposa de suficients monedes.\n"); }
-    }
-*/
     //Mètode demanar Latitud actual del jugador
     public double latitudJugador () {
         System.out.println("\nLatitud actual?");
@@ -162,9 +118,6 @@ public class Jugador {
         return total;
     }
     public void setPokeballs(int posicio) { pokeballs[posicio]--; }
-    //public int getSuperballs() { return pokeballs[1]; }
-    //public int getUltraballs() { return pokeballs[2]; }
-    //public int getMasterballs() { return pokeballs[3]; }
     public double getLatitud() { return latitud; }
     public double getLongitud() { return longitud; }
 }

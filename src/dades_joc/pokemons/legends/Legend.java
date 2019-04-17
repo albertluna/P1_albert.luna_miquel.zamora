@@ -4,6 +4,8 @@ import LlegirJSON.LegendsJSON;
 import dades_joc.*;
 import dades_joc.pokemons.Pokemon;
 
+import java.util.LinkedList;
+
 public class Legend extends Pokemon {
 
     private Gym gym;
@@ -23,5 +25,18 @@ public class Legend extends Pokemon {
         double probabilitat = (Math.pow((double)ball.getCaptureRate(), 1.5) + Math.pow((double) capture_rate, Math.PI))/4096;
         System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
+    }
+
+    public static boolean isLlegendari(int nPokemon, LinkedList<Legend> llegendaris) {
+        boolean trobat = false;
+        for (Legend l: llegendaris) {
+            if (l.getId().equals(nPokemon)) {
+                trobat = true;
+            }
+        }
+        return trobat;
+    }
+    public Gym getGym() {
+        return gym;
     }
 }

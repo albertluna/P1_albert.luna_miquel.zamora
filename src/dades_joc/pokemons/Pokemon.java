@@ -2,6 +2,8 @@ package dades_joc.pokemons;
 
 import dades_joc.*;
 
+import java.util.LinkedList;
+
 public class Pokemon {
 
     //Creació atributs
@@ -21,6 +23,17 @@ public class Pokemon {
         double probabilitat = (((double)ball.getCaptureRate() / 256) + ((double) capture_rate / 2048));
         System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
+    }
+
+    //La funcio retorna si el id que es passa es d'algun pokemon de la llista de pokemons
+    public static boolean isInList(LinkedList<Pokemon> poke, int id) {
+        boolean trobat = false;
+        for (Pokemon p: poke) {
+            if (p.getId().equals(id)){
+                trobat = true;
+            }
+        }
+        return trobat;
     }
 
     //Getter
