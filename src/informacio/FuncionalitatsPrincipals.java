@@ -4,6 +4,7 @@ import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import HTML.InformeCapturats;
 import dades_joc.*;
 import dades_joc.pokemons.*;
 import dades_joc.pokemons.legends.Legend;
@@ -161,6 +162,7 @@ public class FuncionalitatsPrincipals {
                 }
                 break;
             case 7:
+                InformeCapturats.generarFitxer(jugador);
                 break;
             case 8:
                 break;

@@ -141,4 +141,6 @@ public class Jugador {
     public double getLatitud() { return latitud; }
     public double getLongitud() { return longitud; }
     public void afegirCaptura(Pokemon p) { capturats.add(p);}
+
+    public LinkedList<Pokemon> getCapturats() { return capturats; }
 }
