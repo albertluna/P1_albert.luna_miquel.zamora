@@ -14,7 +14,7 @@ public class Main {
         dades.actualitzar();
 
         do {
-            //Mostrem el menú
+            //Mostrem el menú principal
             menu.mostrarMenu();
 
             //Demanem a l'usuari l'opció fins que sigui un valor vàlid
