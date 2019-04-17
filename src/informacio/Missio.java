@@ -103,9 +103,16 @@ public class Missio {
     private static void actualitzarRecercaEspecial(Jugador j, Pokemon poke, LinkedList<Mythical> mitics) {
         j.afegirCaptura(poke);
         for (Mythical m: mitics) {
-            if (m.getSr().afegirPokemon(poke)) {
-                System.out.println("\nMissió de captura completada!");
-                System.out.println("\nRecerca Especial completada: Se t'apareix el mític " + m.getName() + "!");
+            if (!m.getSr().isAcabat()) {
+
+                //Aquesta funcio determinarà si s'acaba de finalitzar una SpecialResearch
+                //i afegirà el pokémon mític que es troba
+                boolean fiMissio = m.getSr().afegirPokemon(poke, j);
+                if (fiMissio) {
+                    System.out.println("\nMissió de captura completada!");
+                    System.out.println("\nRecerca Especial completada: Se t'apareix el mític " +m.getName() + "!");
+                    j.afegirCaptura(m);
+                }
             }
         }
     }

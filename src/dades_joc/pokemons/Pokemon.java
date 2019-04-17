@@ -17,11 +17,8 @@ public class Pokemon {
         this.capture_rate = capture_rate;
     }
 
-
     public boolean capture(Balls ball) {
-        System.out.println("HOLA    " + ball.getCaptureRate() + "\t-->"+ this.capture_rate);
         double probabilitat = (((double)ball.getCaptureRate() / 256) + ((double) capture_rate / 2048));
-        System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
     }
 

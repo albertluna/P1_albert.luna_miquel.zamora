@@ -10,11 +10,15 @@ public class SpecialResearch {
     private String name;
     private Quest[] quests;
     private float percentatge;
+    private boolean acabat = false;
 
     //Getter
     public String getName() {
         return name;
     }
+
+    //Getter
+    public boolean isAcabat() { return acabat; }
 
     //Getter
     public LinkedList<Quest> getQuests() {
@@ -36,17 +40,18 @@ public class SpecialResearch {
 
     //Es passa un pokemon i es comprova si està en la missió i s'actualitza si hi és
     //Retorna true si s'acaba de finalitzar la missió
-    public boolean afegirPokemon(Pokemon p) {
-        boolean fiMissio = false;
+    public boolean afegirPokemon(Pokemon p, Jugador j) {
         for (Quest q: getQuests()) {
             if (q.getTarget().equals(p.getId())&&q.getPercentatge() != 100) {
                 q.setCapturated();
-                if (q.getCapturated()==100) {
-                    fiMissio = true;
+
+                //Es finalitza la special research
+                if (getPercentatge()==100) {
+                    acabat = true;
                 }
             }
         }
-        return fiMissio;
+        return acabat;
     }
 
     @Override

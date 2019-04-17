@@ -430,15 +430,15 @@
         "quests": [
         {
             "target": 419,
-            "quantity": 3
+            "quantity": 1
         },
         {
             "target": 423,
-            "quantity": 2
+            "quantity": 1
         },
         {
             "target": 457,
-            "quantity": 2
+            "quantity": 1
         }
         ]
     }
