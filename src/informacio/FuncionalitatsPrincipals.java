@@ -105,15 +105,16 @@ public class FuncionalitatsPrincipals {
                 //Bucle demanar longitud fins que sigui vàlid
                 while (longitud < -180 || longitud > 180) {
                     longitud = jugador.longitudJugador();
-                    //Si longitud no vàlida, mostrem error
+                    //Si longitud no és vàlida, mostrem error
                     if (longitud < -180 || longitud > 180) { System.out.println("Introdueixi una longitud entre -180 i 180."); }
                 }
 
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //Càlcul distància manhattan
-
+                //Obtenció gym més proper a partir de la distància manhattan
                 Gym gymProper = jugador.gimnasProper(latitud, longitud, llegendaris);
-                System.out.println("\nGimnàs més proper: " + gymProper.getName());
+                System.out.println("\nGimnàs més proper: " + gymProper.getName() + ". Comencant raid...");
+
+                System.out.println();
+                break;
 
             case 6:
 

@@ -15,8 +15,8 @@ public class Legend extends Pokemon {
         gym = l.getGym();
     }
 
-    public double distanciaManhattan(double latitud, double longitud) {
-        return Math.abs(latitud - gym.getLocation().getLatitude()) + Math.abs(longitud - gym.getLocation().getLongitude());
+    public double distanciaManhattan(double latJugador, double lonJugador, double latGym, double lonGym) {
+        return Math.abs(latGym - latJugador) + Math.abs(lonGym - lonJugador);
     }
 
     @Override
