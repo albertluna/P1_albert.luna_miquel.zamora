@@ -7,7 +7,8 @@ import java.io.*;
 
 public class InformeCapturats {
 
-    private static final String BASE = "https://pokeapi.co/api/v2/pokemon-species/";
+    private static final String BASE = "https://pokeapi.co/api/v2/";
+    private static final String FOTO = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
     public static void generarFitxer(Jugador j) {
         String contingut = "";
@@ -23,11 +24,11 @@ public class InformeCapturats {
                     "<meta name=\"author\" content=\"Albert Luna i Miquel Zamora - albert.luna i miquel.zamorai\">" +
                     "</head>" +
                     "<body>" +
-                    "<h1>Pokemons capturatss " + j.getCapturats().size() +"</h1>";
+                    "<h1>Pokemons capturats " + j.getCapturats().size() +"</h1>";
             for (Pokemon p: j.getCapturats()) {
-                contingut += "<img src=\"https://i.redd.it/ap8fmgf1fzcz.jpg\"\n" +
+                contingut += "<img src=\"" + FOTO + p.getId() + ".png\"\n" +
                         "alt=\"Foto de " + p.getName() + "\" width=\"100\" height=\"100\"/>" +
-                        " <span <p><b>" + p.getName() + " x1</b></p></span>";
+                        " <span <p><b>" + p.getName() + " </b>x1</p></span>";
 
             }
 

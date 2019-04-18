@@ -19,10 +19,7 @@ public class MenuComprar {
         System.out.println("\nPokéballs disponibles:");
 
         for (Balls b : balls) {
-            String nom = b.getName();   //Obtenim el nom de la ball
-            String aux = nom.substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula
-            String ball = aux + nom.substring(1);   //Ajuntem la primera lletra majúscula amb la resta de la paraula per obtenir el nom sencer
-            System.out.println("\t" + (char)index + ") " + ball + ": " + b.getPrice() + " monedes");
+            System.out.println("\t" + (char)index + ") " + b.getName() + ": " + b.getPrice() + " monedes");
             index++;
         }
 

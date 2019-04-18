@@ -94,8 +94,8 @@ public class TreballDades {
 
     private static LinkedList<Balls> capitaliza(LinkedList<Balls> balls) {
         for (Balls b: balls) {
-            String aux = b.getName().substring(0, 1).toUpperCase();
-            b.setName(aux + b.getName().substring(1));
+            String aux = b.getName().substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula
+            b.setName(aux + b.getName().substring(1)); //Ajuntem la primera lletra majúscula amb la resta de la paraula per obtenir el nom sencer
         }
         return balls;
     }
