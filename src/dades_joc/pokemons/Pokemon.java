@@ -43,6 +43,11 @@ public class Pokemon {
         return name;
     }
 
+    //Setter
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //Getter
     public Integer getCaptureRate() {
         return capture_rate;

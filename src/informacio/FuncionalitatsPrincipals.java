@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 import HTML.InformeCapturats;
+import LlegirJSON.TreballDades;
 import dades_joc.*;
 import dades_joc.pokemons.*;
 import dades_joc.pokemons.legends.Legend;
@@ -73,16 +74,6 @@ public class FuncionalitatsPrincipals {
                 System.out.println("\nInventari");
                 for (int i = 0; i < balls.size(); i++) {
                     if (jugador.getPokeballs(i) > 0) {
-
-
-                        /*
-                        *
-                        *
-                        *
-                        *       Miqueeeeel!! Proposo fer lo de la majuscula com una funcio
-                        *       perque s'ha de fer servir molts més cops :)
-                        *
-                        */
                         String nom = balls.get(i).getName();   //Obtenim el nom de la ball
                         String aux = nom.substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula
                         String ball = aux + nom.substring(1);   //Ajuntem la primera lletra majúscula amb la resta de la paraula per obtenir el nom sencer
@@ -124,29 +115,6 @@ public class FuncionalitatsPrincipals {
                 Gym gymProper = jugador.gimnasProper(latitud, longitud, llegendaris);
                 System.out.println("\nGimnàs més proper: " + gymProper.getName());
 
-/*
-                for (Legend l : llegendaris) {
-                    System.out.println("\tAnem per la " + i);
-                    if(l.getKind().equals("legendary")) {
-                        distMan = legends.get(i).distanciaManhattan(latitud, longitud);
-                        if (distMan > distManMax) {
-                            distManMax = distMan;
-                            aprop = i;
-                        }
-                    }
-                }
-                System.out.println("\nGimnàs més proper: " + legends.get(aprop).getGym().getName() + ". Començant raid...");
-                //Trobar el pokemon del gimnas
-                int nPokemon = 0;
-                for (int i = 0; i < pokemon.size(); i++) {
-                    if(pokemon.get(i).getId()==legends.get(aprop).getId()){
-                        nPokemon = i;
-                    }
-                }
-                System.out.println("\nEl boss de raid " + pokemon.get(nPokemon).getName() + " us repta!");
-                Missio.ferMissio(jugador, balls, pokemon, aprop);
-                break;
-                */
             case 6:
 
                 System.out.println("\nRecerques Especials:");
@@ -155,8 +123,8 @@ public class FuncionalitatsPrincipals {
                     if (!(m.getSr().getPercentatge() == 100 || m.getSr().getPercentatge() == 0.0)) {
                         System.out.println("\n\n\t-" + m.getSr().getName() + " (" + m.getName() + "):");
                         for (Quest q: m.getSr().getQuests()) {
-                            System.out.println("\t\t* Capturar " + getPokemon(q.getTarget()).getName() + ": " +  q.getCapturated()
-                                    + "/" + q.getQuantity() + " (" + q.getPercentatge() + "%)");
+                            System.out.println("\t\t* Capturar " + TreballDades.getPokemon(q.getTarget(), pokemon).getName() +
+                                    ": " +  q.getCapturated() + "/" + q.getQuantity() + " (" + q.getPercentatge() + "%)");
                         }
                     }
                 }
@@ -168,16 +136,6 @@ public class FuncionalitatsPrincipals {
                 break;
 
         }
-    }
-
-    public Pokemon getPokemon(int id) {
-        Pokemon trobat = null;
-        for (Pokemon p: pokemon) {
-            if (p.getId().equals(id)){
-                trobat = p;
-            }
-        }
-        return trobat;
     }
 }
 

@@ -63,12 +63,10 @@ public class TreballDades {
 
     public void actualitzar() {
 
-        LinkedList<Balls> pokeballs = TransformarDadesJSON.balls(balls);
-        LinkedList<Pokemon> pokemons = TransformarDadesJSON.pokemons(pokemon);
+        LinkedList<Balls> pokeballs = capitaliza(TransformarDadesJSON.balls(balls));
+        LinkedList<Pokemon> pokemons = capitalize(TransformarDadesJSON.pokemons(pokemon));
         LinkedList<Legend> llegendaris = TransformarDadesJSON.legends(pokemons, legends);
         LinkedList<Mythical> mitics = TransformarDadesJSON.mistics(pokemons, legends);
-
-        //eliminarRepetits(pokemons, llegendaris, mitics);
 
         fp = new FuncionalitatsPrincipals(pokeballs, pokemons, llegendaris, mitics);
     }
@@ -76,9 +74,31 @@ public class TreballDades {
     public void mostrar(int opcio) {
         fp.mostrar(opcio);
     }
-/*
-    public void eliminarRepetits(LinkedList<Pokemon> poke, LinkedList<Legend> llegendari, LinkedList<Mythical> mitic) {
-        poke.
-    }*/
+
+    public static Pokemon getPokemon(int id, LinkedList<Pokemon> pokemon) {
+        Pokemon trobat = null;
+        for (Pokemon p: pokemon) {
+            if (p.getId().equals(id)){
+                trobat = p;
+            }
+        }
+        return trobat;
+    }
+
+    private static LinkedList<Pokemon> capitalize(LinkedList<Pokemon> poke) {
+        for (Pokemon p: poke) {
+            String aux = p.getName().substring(0, 1).toUpperCase();
+            p.setName(aux + p.getName().substring(1));
+        }
+        return poke;
+    }
+
+    private static LinkedList<Balls> capitaliza(LinkedList<Balls> balls) {
+        for (Balls b: balls) {
+            String aux = b.getName().substring(0, 1).toUpperCase();
+            b.setName(aux + b.getName().substring(1));
+        }
+        return balls;
+    }
 }
 

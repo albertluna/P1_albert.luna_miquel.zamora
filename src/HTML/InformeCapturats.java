@@ -1,9 +1,9 @@
 package HTML;
 
 import dades_joc.Jugador;
+import dades_joc.pokemons.Pokemon;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class InformeCapturats {
 
@@ -12,7 +12,7 @@ public class InformeCapturats {
     public static void generarFitxer(Jugador j) {
         String contingut = "";
         try {
-            FileOutputStream fos = new FileOutputStream("informe_capturades.html");
+            FileOutputStream fos = new FileOutputStream(new File("fitxers/html/informe_capturades_6.html"));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             contingut = "<!doctype html>" +
@@ -24,9 +24,11 @@ public class InformeCapturats {
                     "</head>" +
                     "<body>" +
                     "<h1>Pokemons capturatss " + j.getCapturats().size() +"</h1>";
-            for (int i = 0; i < j.getCapturats().size(); i++) {
-                contingut += "img src=\"" + BASE + j.getCapturats().getFirst().getId() + "\"" +
-                        "alt=\"No ho estàs fent bé\"/>";
+            for (Pokemon p: j.getCapturats()) {
+                contingut += "<img src=\"https://i.redd.it/ap8fmgf1fzcz.jpg\"\n" +
+                        "alt=\"Foto de " + p.getName() + "\" width=\"100\" height=\"100\"/>" +
+                        " <span <p><b>" + p.getName() + " x1</b></p></span>";
+
             }
 
             contingut += "</body>" +
