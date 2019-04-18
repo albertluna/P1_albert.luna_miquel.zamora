@@ -62,7 +62,6 @@ public class TreballDades {
     }
 
     public void actualitzar() {
-
         LinkedList<Balls> pokeballs = capitaliza(TransformarDadesJSON.balls(balls));
         LinkedList<Pokemon> pokemons = capitalize(TransformarDadesJSON.pokemons(pokemon));
         LinkedList<Legend> llegendaris = TransformarDadesJSON.legends(pokemons, legends);
