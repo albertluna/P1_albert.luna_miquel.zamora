@@ -115,11 +115,16 @@ public class Jugador {
     //Mètode calcular el gimnàs més proper al jugador a partir de la Distancia Manhattan
     public Gym gimnasProper (double latitud, double longitud, LinkedList<Legend> llegendaris) {
         double distManhattanMin = Double.MAX_VALUE;
-        double aux;
+        double aux, latGym, lonGym;
+        double latJugador = latitud;
+        double lonJugador = longitud;
+
         Gym gymProper = new Gym();
 
         for (Legend l : llegendaris) {
-            aux = l.distanciaManhattan(latitud, longitud);
+            latGym = l.getGym().getLocation().getLatitude();
+            lonGym = l.getGym().getLocation().getLongitude();
+            aux = l.distanciaManhattan(latJugador, lonJugador, latGym, lonGym);
             if (aux < distManhattanMin) {
                 distManhattanMin = aux;
                 gymProper = l.getGym();

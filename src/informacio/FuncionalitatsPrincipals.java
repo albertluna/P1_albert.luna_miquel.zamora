@@ -114,39 +114,17 @@ public class FuncionalitatsPrincipals {
                 //Bucle demanar longitud fins que sigui vàlid
                 while (longitud < -180 || longitud > 180) {
                     longitud = jugador.longitudJugador();
-                    //Si longitud no vàlida, mostrem error
+                    //Si longitud no és vàlida, mostrem error
                     if (longitud < -180 || longitud > 180) { System.out.println("Introdueixi una longitud entre -180 i 180."); }
                 }
 
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //Càlcul distància manhattan
-
+                //Obtenció gym més proper a partir de la distància manhattan
                 Gym gymProper = jugador.gimnasProper(latitud, longitud, llegendaris);
-                System.out.println("\nGimnàs més proper: " + gymProper.getName());
+                System.out.println("\nGimnàs més proper: " + gymProper.getName() + ". Comencant raid...");
 
-/*
-                for (Legend l : llegendaris) {
-                    System.out.println("\tAnem per la " + i);
-                    if(l.getKind().equals("legendary")) {
-                        distMan = legends.get(i).distanciaManhattan(latitud, longitud);
-                        if (distMan > distManMax) {
-                            distManMax = distMan;
-                            aprop = i;
-                        }
-                    }
-                }
-                System.out.println("\nGimnàs més proper: " + legends.get(aprop).getGym().getName() + ". Començant raid...");
-                //Trobar el pokemon del gimnas
-                int nPokemon = 0;
-                for (int i = 0; i < pokemon.size(); i++) {
-                    if(pokemon.get(i).getId()==legends.get(aprop).getId()){
-                        nPokemon = i;
-                    }
-                }
-                System.out.println("\nEl boss de raid " + pokemon.get(nPokemon).getName() + " us repta!");
-                Missio.ferMissio(jugador, balls, pokemon, aprop);
+                System.out.println();
                 break;
-                */
+
             case 6:
 
                 System.out.println("\nRecerques Especials:");
