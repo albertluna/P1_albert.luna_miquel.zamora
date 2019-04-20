@@ -1,7 +1,7 @@
 package dades_joc;
 
 import dades_joc.pokemons.Pokemon;
-import dades_joc.pokemons.legends.Legend;
+import dades_joc.pokemons.Legend;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

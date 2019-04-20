@@ -1,15 +1,13 @@
 package informacio;
 
-import java.sql.SQLOutput;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import HTML.InformeCapturats;
 import LlegirJSON.TreballDades;
 import dades_joc.*;
 import dades_joc.pokemons.*;
-import dades_joc.pokemons.legends.Legend;
-import dades_joc.pokemons.legends.Mythical;
+import dades_joc.pokemons.Legend;
+import dades_joc.pokemons.Mythical;
 import menus.*;
 
 public class FuncionalitatsPrincipals {

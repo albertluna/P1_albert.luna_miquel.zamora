@@ -1,8 +1,7 @@
-package dades_joc.pokemons.legends;
+package dades_joc.pokemons;
 
 import LlegirJSON.LegendsJSON;
 import dades_joc.SpecialResearch;
-import dades_joc.pokemons.Pokemon;
 
 import java.util.LinkedList;
 

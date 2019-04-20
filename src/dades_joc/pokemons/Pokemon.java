@@ -7,9 +7,9 @@ import java.util.LinkedList;
 public class Pokemon {
 
     //Creació atributs
-    protected int id;
-    protected String name;
-    protected int capture_rate;
+    private int id;
+    private String name;
+    private int capture_rate;
 
     public Pokemon(int id, String name, int capture_rate) {
         this.id = id;
@@ -53,13 +53,4 @@ public class Pokemon {
         return capture_rate;
     }
 
-    //Setter
-    public void setCaptureRate(Integer captureRate) {
-        this.capture_rate = captureRate;
-    }
-
-    @Override
-    public String toString() {
-        return "Pokemon: " + name + ": " + id + ". Captura de " + capture_rate;
-    }
 }

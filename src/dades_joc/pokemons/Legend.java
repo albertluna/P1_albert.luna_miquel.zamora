@@ -1,8 +1,7 @@
-package dades_joc.pokemons.legends;
+package dades_joc.pokemons;
 
 import LlegirJSON.LegendsJSON;
 import dades_joc.*;
-import dades_joc.pokemons.Pokemon;
 
 import java.util.LinkedList;
 
@@ -21,8 +20,7 @@ public class Legend extends Pokemon {
 
     @Override
     public boolean capture(Balls ball) {
-        System.out.println("HOLA    " + super.capture_rate);
-        double probabilitat = (Math.pow((double)ball.getCaptureRate(), 1.5) + Math.pow((double) capture_rate, Math.PI))/4096;
+        double probabilitat = (Math.pow((double)ball.getCaptureRate(), 1.5) + Math.pow((double) super.getCaptureRate(), Math.PI))/4096;
         System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
     }

@@ -22,19 +22,8 @@ public class Balls {
         return capture_rate;
     }
 
-    //Setter
-    public void setCaptureRate(Integer captureRate) {
-        this.capture_rate = captureRate;
-    }
-
     //Getter
     public Integer getPrice() {
         return price;
     }
-
-    //Setter
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
 }

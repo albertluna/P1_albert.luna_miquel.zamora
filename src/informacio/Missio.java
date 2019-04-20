@@ -3,8 +3,9 @@ package informacio;
 import java.util.LinkedList;
 import java.util.Scanner;
 import dades_joc.*;
+import dades_joc.pokemons.Legend;
+import dades_joc.pokemons.Mythical;
 import dades_joc.pokemons.Pokemon;
-import dades_joc.pokemons.legends.*;
 
 public class Missio {
 
