@@ -8,28 +8,29 @@ import dades_joc.pokemons.legends.*;
 
 public class Missio {
 
-    private static boolean trobat = false;
-
-    public static boolean isTrobat() { return trobat; }
-
     //Funció per determinar quin pokemon es vol buscar en la missio
     public static int trobarPokemon(LinkedList<Pokemon> poke, LinkedList<Legend> llegendaris, LinkedList<Mythical> mitics) {
         System.out.println("\nQuin Pokémon vol buscar?");
+        boolean trobat = false;
+        int nPokemon = 0;
 
-        //Es llegeix el id del pokemon que es vol buscar
-        Scanner llegir = new Scanner(System.in);
-        int nPokemon = llegir.nextInt();
+        while (!trobat) {
 
-        //Es determina si el pokemon existeix en el sistema
-        if (!Pokemon.isInList(poke, nPokemon)) {
-            System.out.println("\nHo sentim, però aquest Pokémon no existeix (encara).");
-        }
-        else {
-            //Es mira si és un pokemon salvatge
-            if (Mythical.isMitic(nPokemon, mitics) || Legend.isLlegendari(nPokemon, llegendaris)) {
-                System.out.println("\nHo sentim, però aquest Pokémon és mític i no apareix salvatge");
-            } else {
-                trobat = true;
+            //Es llegeix el id del pokemon que es vol buscar
+            Scanner llegir = new Scanner(System.in);
+            nPokemon = llegir.nextInt();
+
+            //Es determina si el pokemon existeix en el sistema
+            if (!Pokemon.isInList(poke, nPokemon)) {
+                System.out.println("\nHo sentim, però aquest Pokémon no existeix (encara).");
+            }
+            else {
+                //Es mira si és un pokemon salvatge
+                if (Mythical.isMitic(nPokemon, mitics) || Legend.isLlegendari(nPokemon, llegendaris)) {
+                    System.out.println("\nHo sentim, però aquest Pokémon és mític i no apareix salvatge");
+                } else {
+                    trobat = true;
+                }
             }
         }
         return nPokemon;
@@ -39,23 +40,36 @@ public class Missio {
     public static void ferMissio(Jugador jugador, LinkedList<Balls> balls, Pokemon poke, LinkedList<Mythical> mitics) {
 
         System.out.println("\nUn " + poke.getName() + " salvatge aparegué!");
+        int i;
 
-        for (int i = 5; i > 0; i--) {
-            System.out.println("\nQueden " + jugador.quantitatPokeballs() + " Pokéballs i " + i +
-                    "/5 intents. Quin tipus de Pokéball vol fer servir?");
+        for (i=5; i > 0; i--) {
 
-            //Funció que extreu la bola que el jugador utilitzarà per fer la captura
-            Balls bolaGastada = escollirPokeball(balls, jugador);
+            if (jugador.quantitatPokeballs() <= 0) {
 
-            //Càlcul per saber si ha capturat el pokemon
-            if(poke.capture(bolaGastada)) {
-                System.out.println("\nEl " + poke.getName() + " ha estat capturat!");
-                trobat = false;
+                System.out.println("\nNo queden Pokeballs...");
                 i = 0;
-                actualitzarRecercaEspecial(jugador,poke, mitics);
+
             } else {
-                System.out.println("\nLa " + bolaGastada.getName() + " ha fallat!");
+                System.out.println("\nQueden " + jugador.quantitatPokeballs() + " Pokéballs i " + i +
+                        "/5 intents. Quin tipus de Pokéball vol fer servir?");
+
+                //Funció que extreu la bola que el jugador utilitzarà per fer la captura
+                Balls bolaGastada = escollirPokeball(balls, jugador);
+
+                //Càlcul per saber si ha capturat el pokemon
+                if (poke.capture(bolaGastada)) {
+                    System.out.println("\nEl " + poke.getName() + " ha estat capturat!");
+                    i = 0;
+                    actualitzarRecercaEspecial(jugador, poke, mitics);
+                } else {
+                    System.out.println("\nLa " + bolaGastada.getName() + " ha fallat!");
+                }
             }
+        }
+
+        //S'indica que la missió ha estat fallida amb un missatge
+        if (i == 0) {
+            System.out.println("\nEl " + poke.getName() + " ha escapat...");
         }
     }
 
@@ -75,7 +89,7 @@ public class Missio {
             //Es comprova si el jugador te la pokeball
             for (int k = 0; k < balls.size(); k++) {
                 //El nom es correcte
-                if (bola.equals(balls.get(k).getName()) && jugador.quantitatPokeballs() != 0) {
+                if (bola.equals(balls.get(k).getName())) {
                     //En té
                     if (jugador.getPokeballs(k) != 0) {
                         bolaCorrecta = true;

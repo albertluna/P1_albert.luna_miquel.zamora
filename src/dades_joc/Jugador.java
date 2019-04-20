@@ -2,6 +2,8 @@ package dades_joc;
 
 import dades_joc.pokemons.Pokemon;
 import dades_joc.pokemons.legends.Legend;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -14,6 +16,7 @@ public class Jugador {
     private double latitud;
     private double longitud;
     private LinkedList<Pokemon> capturats;
+    private ArrayList<Integer> nCapturats;
 
     //Constructor
     public Jugador(LinkedList<Balls> balls) {
@@ -32,6 +35,7 @@ public class Jugador {
         latitud = 0;
         longitud = 0;
         capturats = new LinkedList<>();
+        nCapturats = new ArrayList<>();
     }
 
 
@@ -145,7 +149,33 @@ public class Jugador {
     public void setPokeballs(int posicio) { pokeballs[posicio]--; }
     public double getLatitud() { return latitud; }
     public double getLongitud() { return longitud; }
-    public void afegirCaptura(Pokemon p) { capturats.add(p);}
+    public void afegirCaptura(Pokemon p) {
+        boolean capturat = false;
+        int index = 0;
+        for (Pokemon c: capturats) {
+            //S'indica si el pokemon que es vol introduir ja ha estat capturat
+            if (c.getId().equals(p.getId())) {
+                capturat = true;
+                index = capturats.indexOf(c);
+            }
+        }
+        if (capturat) {
+            nCapturats.set(index, nCapturats.get(index) + 1);
+        } else {
+            capturats.add(p);
+            nCapturats.add(1);
+        }
+    }
+
+    public ArrayList<Integer> getNCapturats() { return nCapturats; }
 
     public LinkedList<Pokemon> getCapturats() { return capturats; }
+
+    public int getTotalCapturats() {
+        int n = 0;
+        for (Integer i: nCapturats) {
+            n += i;
+        }
+        return n;
+    }
 }

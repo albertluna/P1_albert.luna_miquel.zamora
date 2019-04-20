@@ -13,7 +13,7 @@ public class InformeCapturats {
     public static void generarFitxer(Jugador j) {
         String contingut = "";
         try {
-            FileOutputStream fos = new FileOutputStream(new File("fitxers/html/informe_capturades_6.html"));
+            FileOutputStream fos = new FileOutputStream(new File("fitxers/html/informe_capturats.html"));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             contingut = "<!doctype html>" +
@@ -24,12 +24,11 @@ public class InformeCapturats {
                     "<meta name=\"author\" content=\"Albert Luna i Miquel Zamora - albert.luna i miquel.zamorai\">" +
                     "</head>" +
                     "<body>" +
-                    "<h1>Pokemons capturats " + j.getCapturats().size() +"</h1>";
+                    "<h1>Pokemons capturats " + j.getTotalCapturats() +"</h1>";
             for (Pokemon p: j.getCapturats()) {
                 contingut += "<img src=\"" + FOTO + p.getId() + ".png\"\n" +
-                        "alt=\"Foto de " + p.getName() + "\" width=\"100\" height=\"100\"/>" +
-                        " <span <p><b>" + p.getName() + " </b>x1</p></span>";
-
+                        "alt=\"Foto de " + p.getName() + "\" width=\"100\" height=\"100\" align: \"bottom\"/>" +
+                        " <span <p><b>" + p.getName() + " </b> x" + j.getNCapturats().get(j.getCapturats().indexOf(p)) + "</p></span>";
             }
 
             contingut += "</body>" +
@@ -43,7 +42,7 @@ public class InformeCapturats {
         } catch (Exception e) {
             e.getStackTrace();
         }
-        System.out.println("Ha capturat " + j.getCapturats().size() + " Pokémons en total. Fitxer HTML creat.");
+        System.out.println("Ha capturat " + j.getTotalCapturats() + " Pokémons en total. Fitxer HTML creat.");
     }
 
 

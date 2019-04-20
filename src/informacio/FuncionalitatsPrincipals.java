@@ -83,12 +83,11 @@ public class FuncionalitatsPrincipals {
                 break;
 
             case 4:
-                int nPokemon = 0;
                 if (jugador.quantitatPokeballs() == 0)
                     System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
                 else {
-                    while (!Missio.isTrobat()) nPokemon = Missio.trobarPokemon(pokemon, llegendaris, mitics);
-                    Missio.ferMissio(jugador, balls, pokemon.get(nPokemon-1), mitics);
+                    int nPokemon = Missio.trobarPokemon(pokemon, llegendaris, mitics);
+                    Missio.ferMissio(jugador, balls, pokemon.get(nPokemon - 1), mitics);
                 }
                 break;
 
