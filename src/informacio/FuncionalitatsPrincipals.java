@@ -110,7 +110,17 @@ public class FuncionalitatsPrincipals {
                 Gym gymProper = jugador.gimnasProper(latitud, longitud, llegendaris);
                 System.out.println("\nGimnàs més proper: " + gymProper.getName() + ". Comencant raid...");
 
-                System.out.println();
+                //Obtenció de l'id del pokémon més proper
+                int id = jugador.idProper(latitud, longitud, llegendaris);
+                //A partir de l'id, obtenim de quin pokemon es tracta
+                System.out.println("\nEl boss de raid " + TreballDades.getPokemon(id, pokemon).getName() + " us repta!");
+
+                //Captura del Pokemon
+                if (jugador.quantitatPokeballs() == 0)
+                    System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
+                else {
+                    Missio.ferMissio(jugador, balls, pokemon.get(id - 1), mitics);
+                }
                 break;
 
             case 6:

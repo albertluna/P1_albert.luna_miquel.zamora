@@ -125,16 +125,46 @@ public class Jugador {
 
         Gym gymProper = new Gym();
 
+        //Anem passant per tots els llegendaris de la LinkedList
         for (Legend l : llegendaris) {
+            //Obtenim la latitud del gimnàs
             latGym = l.getGym().getLocation().getLatitude();
+            //Obtenim la longitud del gimnàs
             lonGym = l.getGym().getLocation().getLongitude();
+            //Calculem la distància manhattan
             aux = l.distanciaManhattan(latJugador, lonJugador, latGym, lonGym);
+            //Si el gimnàs actual està més aprop, actualitzem les dades
             if (aux < distManhattanMin) {
                 distManhattanMin = aux;
                 gymProper = l.getGym();
             }
         }
         return gymProper;
+    }
+
+    //Mètode calcular el pokemon més proper al jugador a partir de la Distancia Manhattan
+    public int idProper (double latitud, double longitud, LinkedList<Legend> llegendaris) {
+        double distManhattanMin = Double.MAX_VALUE;
+        double aux, latGym, lonGym;
+        double latJugador = latitud;
+        double lonJugador = longitud;
+        int id = 0;
+
+        //Anem passant per tots els llegendaris de la LinkedList
+        for (Legend l : llegendaris) {
+            //Obtenim la latitud del gimnàs
+            latGym = l.getGym().getLocation().getLatitude();
+            //Obtenim la longitud del gimnàs
+            lonGym = l.getGym().getLocation().getLongitude();
+            //Calculem la distància manhattan
+            aux = l.distanciaManhattan(latJugador, lonJugador, latGym, lonGym);
+            //Si el gimnàs actual està més aprop, actualitzem les dades
+            if (aux < distManhattanMin) {
+                distManhattanMin = aux;
+                id = l.getId();
+            }
+        }
+        return id;
     }
 
     //Getters

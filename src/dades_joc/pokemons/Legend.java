@@ -9,6 +9,7 @@ public class Legend extends Pokemon {
 
     private Gym gym;
 
+
     public Legend(Pokemon p, LegendsJSON l) {
         super(p.getId(), p.getName(), p.getCaptureRate());
         gym = l.getGym();
