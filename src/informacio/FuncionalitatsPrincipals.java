@@ -116,9 +116,9 @@ public class FuncionalitatsPrincipals {
                 System.out.println("\nEl boss de raid " + TreballDades.getPokemon(id, pokemon).getName() + " us repta!");
 
                 //Captura del Pokemon
-                if (jugador.quantitatPokeballs() == 0)
-                    System.out.println("Ho sentim, però no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
-                else {
+                if (jugador.quantitatPokeballs() == 0) { //Si no té
+                    System.out.println("Ho sentim, pero no té Pokéballs disponibles, pel que no pot buscar Pokémons.");
+                } else {
                     Missio.ferMissio(jugador, balls, pokemon.get(id - 1), mitics);
                 }
                 break;
