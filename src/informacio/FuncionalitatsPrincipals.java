@@ -141,6 +141,8 @@ public class FuncionalitatsPrincipals {
                 InformeCapturats.generarFitxer(jugador);
                 break;
             case 8:
+                System.out.println("De quin Pokemon vol informacio?");
+
                 break;
 
         }
