@@ -19,7 +19,6 @@ public class InformePokemon {
 
     public static void generarInforme(Pokemon pokemon) {
         nomPokemon = pokemon.getName().toLowerCase();
-        //nomPokemon = nomPokemon.toLowerCase().charAt(0) + nomPokemon.substring(1, nomPokemon.length()).toLowerCase();
 
         //Ens provem de connectar a l'API
         try {
