@@ -19,13 +19,14 @@ public class Legend extends Pokemon {
         return Math.abs(latGym - latJugador) + Math.abs(lonGym - lonJugador);
     }
 
+    //Metode que calcula si aquest pokemon es capturat mitjancant les probabilitats de captura del legend i del pokeball
     @Override
     public boolean capture(Balls ball) {
         double probabilitat = (Math.pow((double)ball.getCaptureRate(), 1.5) + Math.pow((double) super.getCaptureRate(), Math.PI))/4096;
-        System.out.println("    Tens una probabilitat del " + probabilitat);
         return probabilitat > Math.random();
     }
 
+    //Funcio que comprova si la id que es passa per referencia es d'un pokemon llegendari
     public static boolean isLlegendari(int nPokemon, LinkedList<Legend> llegendaris) {
         boolean trobat = false;
         for (Legend l: llegendaris) {

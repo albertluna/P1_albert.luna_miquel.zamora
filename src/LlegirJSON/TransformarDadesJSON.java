@@ -9,8 +9,7 @@ import java.util.LinkedList;
 
 public class TransformarDadesJSON {
 
-
-
+    //Funcions per transformar les dades extretes del json en format array a LinkedList per poder manejar millor
     public static LinkedList<Balls> balls(Balls[] balls) {
         LinkedList<Balls> pokeballs = new LinkedList();
         for (int i = 0; balls.length > i; i++) {

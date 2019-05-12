@@ -13,9 +13,12 @@ public class InformeCapturats {
     public static void generarFitxer(Jugador j) {
         String contingut = "";
         try {
+
+            //Creacio del fitxer html
             FileOutputStream fos = new FileOutputStream(new File("fitxers/html/informe_capturats.html"));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
+            //Injeccio del contingut que volem que s'introdueixi a la capcalera
             contingut = "<!doctype html>" +
                     "<html lang=\"es\">" +
                     "<head>" +
@@ -25,12 +28,15 @@ public class InformeCapturats {
                     "</head>" +
                     "<body>" +
                     "<h1>Pokemons capturats " + j.getTotalCapturats() +"</h1>";
+
+            //Bucle oer anar posant tota la informacio de cada pokemon
             for (Pokemon p: j.getCapturats()) {
                 contingut += "<img src=\"" + FOTO + p.getId() + ".png\"\n" +
                         "alt=\"Foto de " + p.getName() + "\" width=\"100\" height=\"100\" align: \"bottom\"/>" +
                         " <span <p><b>" + p.getName() + " </b> x" + j.getNCapturats().get(j.getCapturats().indexOf(p)) + "</p></span>";
             }
 
+            //Tancament del contingut del fitxer html
             contingut += "</body>" +
                     "</html>";
 

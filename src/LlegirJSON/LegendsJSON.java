@@ -1,5 +1,6 @@
 package LlegirJSON;
 
+import com.google.gson.annotations.SerializedName;
 import dades_joc.Gym;
 import dades_joc.SpecialResearch;
 
@@ -9,7 +10,8 @@ public class LegendsJSON {
     private Integer id;
     private String kind;
     private Gym gym;
-    private SpecialResearch special_research;
+    @SerializedName("special_research")
+    private SpecialResearch specialResearch;
 
     //Getter
     public Integer getId() {
@@ -28,20 +30,8 @@ public class LegendsJSON {
 
     //Getter
     public SpecialResearch getSpecialResearch() {
-        return special_research;
+        return specialResearch;
     }
 
-    @Override
-    public String toString() {
-        String info = new String();
-        if (kind.equals("mythical")) {
-            info = "" + id + " " + kind + " " + special_research.toString();
-        } else {
-            if (kind.equals("legendary")) {
-                info = "" + id + " " + kind + " " + gym.toString();
-            }
-        }
-        return info;
-    }
 }
 

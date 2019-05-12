@@ -24,8 +24,5 @@ public class Gym {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    @Override
-    public String toString() { return "" + name + " a " + location.toString(); }
 }
 

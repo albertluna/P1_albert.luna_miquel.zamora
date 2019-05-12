@@ -17,6 +17,7 @@ public class Mythical extends Pokemon {
     //Getter
     public SpecialResearch getSr() { return sr; }
 
+    //Funcio que comprova si la id que es passa per referencia es d'un pokemon llegendari
     public static boolean isMitic(int nPokemon, LinkedList<Mythical> mitics) {
         boolean trobat = false;
         for (Mythical m: mitics) {

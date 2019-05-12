@@ -11,23 +11,8 @@ public class Location {
         return longitude;
     }
 
-    //Setter
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
     //Getter
     public double getLatitude() {
         return latitude;
-    }
-
-    //Setter
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    @Override
-    public String toString() {
-        return "\n\t longitud: " + longitude + "\n\t latitud: " + latitude + "\n\n\n";
     }
 }

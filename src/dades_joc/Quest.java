@@ -24,9 +24,4 @@ public class Quest {
 
     //Setter
     public void setCapturated() { this.capturated ++; }
-
-    @Override
-    public String toString() {
-        return "\n\tQuest --> " + target + " (target) " + quantity + " (quantity);";
-    }
 }

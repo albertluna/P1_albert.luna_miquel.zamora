@@ -176,9 +176,11 @@ public class Jugador {
         }
         return total;
     }
+
+    //Setter
     public void setPokeballs(int posicio) { pokeballs[posicio]--; }
-    public double getLatitud() { return latitud; }
-    public double getLongitud() { return longitud; }
+
+    //S'afegeix un pokemon capturat a la llista de capturats
     public void afegirCaptura(Pokemon p) {
         boolean capturat = false;
         int index = 0;
@@ -189,6 +191,8 @@ public class Jugador {
                 index = capturats.indexOf(c);
             }
         }
+
+        //S'afegeix a la llista segons les circumstancies
         if (capturat) {
             nCapturats.set(index, nCapturats.get(index) + 1);
         } else {
@@ -197,10 +201,13 @@ public class Jugador {
         }
     }
 
+    //Getter
     public ArrayList<Integer> getNCapturats() { return nCapturats; }
 
+    //Getter
     public LinkedList<Pokemon> getCapturats() { return capturats; }
 
+    //Calcula el nombre total de pokemons capturats pel jugador
     public int getTotalCapturats() {
         int n = 0;
         for (Integer i: nCapturats) {

@@ -1,5 +1,6 @@
 package dades_joc.pokemons;
 
+import com.google.gson.annotations.SerializedName;
 import dades_joc.*;
 
 import java.util.LinkedList;
@@ -9,16 +10,17 @@ public class Pokemon {
     //Creació atributs
     private int id;
     private String name;
-    private int capture_rate;
+    @SerializedName("capture_rate")
+    private int captureRate;
 
-    public Pokemon(int id, String name, int capture_rate) {
+    public Pokemon(int id, String name, int captureRate) {
         this.id = id;
         this.name = name;
-        this.capture_rate = capture_rate;
+        this.captureRate = captureRate;
     }
 
     public boolean capture(Balls ball) {
-        double probabilitat = (((double)ball.getCaptureRate() / 256) + ((double) capture_rate / 2048));
+        double probabilitat = (((double)ball.getCaptureRate() / 256) + ((double) captureRate / 2048));
         return probabilitat > Math.random();
     }
 
@@ -50,7 +52,7 @@ public class Pokemon {
 
     //Getter
     public Integer getCaptureRate() {
-        return capture_rate;
+        return captureRate;
     }
 
 }

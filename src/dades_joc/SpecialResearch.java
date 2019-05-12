@@ -29,8 +29,10 @@ public class SpecialResearch {
         return quests;
     }
 
+    //Getter
     public float getPercentatge() {
         percentatge = 0;
+        //S'actualitza el percentatge d'avanc de la special research
         for (Quest q: getQuests()) {
             percentatge += q.getPercentatge();
         }
@@ -54,12 +56,4 @@ public class SpecialResearch {
         return acabat;
     }
 
-    @Override
-    public String toString() {
-        String retornar = "";
-        for (int i = 0; i < quests.length; i++) {
-            retornar += "\n\t " + name + " " + quests[i].toString();
-        }
-        return retornar;
-    }
 }

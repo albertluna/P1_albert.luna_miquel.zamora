@@ -1,10 +1,13 @@
 package dades_joc;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Balls {
 
     //Creació atributs
     private String name;
-    private Integer capture_rate;
+    @SerializedName("capture_rate")
+    private Integer captureRate;
     private Integer price;
 
     //Getter
@@ -19,7 +22,7 @@ public class Balls {
 
     //Getter
     public Integer getCaptureRate() {
-        return capture_rate;
+        return captureRate;
     }
 
     //Getter

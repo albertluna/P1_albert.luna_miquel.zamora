@@ -74,6 +74,7 @@ public class TreballDades {
         fp.mostrar(opcio);
     }
 
+    //S'obte el pokemon que li passes el id per referencia
     public static Pokemon getPokemon(int id, LinkedList<Pokemon> pokemon) {
         Pokemon trobat = null;
         for (Pokemon p: pokemon) {
@@ -84,6 +85,7 @@ public class TreballDades {
         return trobat;
     }
 
+    //Funcio per posar en majuscula la primera letra del nom dels pokemons
     private static LinkedList<Pokemon> capitalize(LinkedList<Pokemon> poke) {
         for (Pokemon p: poke) {
             String aux = p.getName().substring(0, 1).toUpperCase();
@@ -92,6 +94,7 @@ public class TreballDades {
         return poke;
     }
 
+    //Funcio per posar en majuscula la primera letra del nom dels pokeballs
     private static LinkedList<Balls> capitaliza(LinkedList<Balls> balls) {
         for (Balls b: balls) {
             String aux = b.getName().substring(0, 1).toUpperCase(); //Ens quedem amb la primera lletra i la fem majúscula

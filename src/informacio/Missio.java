@@ -11,11 +11,11 @@ public class Missio {
 
     //Funció per determinar quin pokemon es vol buscar en la missio
     public static int trobarPokemon(LinkedList<Pokemon> poke, LinkedList<Legend> llegendaris, LinkedList<Mythical> mitics) {
-        System.out.println("\nQuin Pokémon vol buscar?");
         boolean trobat = false;
         int nPokemon = 0;
 
         while (!trobat) {
+            System.out.println("\nQuin Pokémon vol buscar?");
 
             //Es llegeix el id del pokemon que es vol buscar
             Scanner llegir = new Scanner(System.in);
