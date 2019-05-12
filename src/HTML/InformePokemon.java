@@ -11,14 +11,13 @@ public class InformePokemon {
     private static final String FOTO = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
     private static final String INFORME1 = "https://pokeapi.co/api/v2/pokemon-species/";
     private static final String INFORME2 = "https://pokeapi.co/api/v2/pokemon/";
-    private static String flavorText = "";
-    private static String weight = "";
-    private static String height = "";
-    private static String baseExperience = "";
-    private static String nomPokemon = "";
 
     public static void generarInforme(Pokemon pokemon) {
-        nomPokemon = pokemon.getName().toLowerCase();
+        String nomPokemon = pokemon.getName().toLowerCase();
+        String flavorText = "";
+        String weight = "";
+        String height = "";
+        String baseExperience = "";
 
         //Ens provem de connectar a l'API
         try {
