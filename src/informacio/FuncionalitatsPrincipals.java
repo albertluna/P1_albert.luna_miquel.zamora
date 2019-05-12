@@ -1,8 +1,10 @@
 package informacio;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 import HTML.InformeCapturats;
+import HTML.InformePokemon;
 import LlegirJSON.TreballDades;
 import dades_joc.*;
 import dades_joc.pokemons.*;
@@ -18,6 +20,7 @@ public class FuncionalitatsPrincipals {
     public LinkedList<Legend> llegendaris;
     public LinkedList<Mythical> mitics;
     public LinkedList<Pokemon> pokemon;
+    private Scanner scanner;
 
     public FuncionalitatsPrincipals(LinkedList<Balls> balls, LinkedList<Pokemon> pokemons, LinkedList<Legend> llegendaris, LinkedList<Mythical> mitics) {
 
@@ -28,6 +31,7 @@ public class FuncionalitatsPrincipals {
         this.mitics = mitics;
 
         this.jugador = new Jugador(this.balls);
+        scanner = new Scanner(System.in);
 }
 
 
@@ -141,8 +145,26 @@ public class FuncionalitatsPrincipals {
                 InformeCapturats.generarFitxer(jugador);
                 break;
             case 8:
-                System.out.println("De quin Pokemon vol informacio?");
-
+                //Variable auxiliar que utilitzarem per guardar quin és el Pokemón del qual l'usuari vol informació
+                Pokemon auxPokemon = new Pokemon(1,"a",1);
+                //Demanem a l'usuari de quin Pokémon vol obtenir informacio
+                System.out.println("\nDe quin Pokemon vol informacio?");
+                String nomPokemon = scanner.nextLine();
+                //Recorrem tota la llista de Pokémons en busca del Pokémon introduit per l'usuari
+                for (Pokemon p: pokemon) {
+                    //Si trobem el Pokémon, actualitzem la informació
+                    if (p.getName().equals(nomPokemon)) {
+                        auxPokemon = p;
+                    }
+                }
+                //Si no hem trobat el Pokémon ja que el nom no és vàlid, mostrem missatge d'error
+                if (auxPokemon.getName().equals("a")) {
+                    System.out.println("\nHo sentim, però aquest Pokémon no existeix (encara).");
+                }
+                //Si hem trobat el Pokémon, creem el seu fitxer HTML
+                else {
+                    InformePokemon.generarInforme(auxPokemon);
+                }
                 break;
 
         }

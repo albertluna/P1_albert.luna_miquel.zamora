@@ -21,7 +21,7 @@ public class InformeCapturats {
                     "<head>" +
                     "<meta charset=\"UTF-8\">" +
                     "<title>Pokemons capturats</title>" +
-                    "<meta name=\"author\" content=\"Albert Luna i Miquel Zamora - albert.luna i miquel.zamorai\">" +
+                    "<meta name=\"author\" content=\"Albert Luna i Miquel Zamora - albert.luna i miquel.zamora\">" +
                     "</head>" +
                     "<body>" +
                     "<h1>Pokemons capturats " + j.getTotalCapturats() +"</h1>";
