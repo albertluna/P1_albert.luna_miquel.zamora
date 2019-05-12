@@ -61,15 +61,6 @@ public class InformePokemon {
             }
             //Tallem l'string amb la posició exacta perquè només ens quedi la descripció del Poémon
             flavorText = flavorText.substring(aux);
-            //Eliminem els \n residuals que trobem enmig de la descripció. Resultat final guardat a la variable "flavorText"
-            String text = flavorText.replace("\n", "").replace("\r", ",");
-            String text2 = flavorText.replace(System.getProperty("line.separator"), ",");
-            String text3 = flavorText.replaceAll("\\r|\\n", ",");
-            String text4 = flavorText.replaceAll(System.lineSeparator(),"");
-            System.out.println(text);
-            System.out.println(text2);
-            System.out.println(text3);
-            System.out.println(text4);
 
             //CARREGUEM TOTA LA INFORMACIÓ DEL SEGON INFORME DEL POKÉMON EN UNA STRING AUXILIAR
             //Primer connectem amb l'API
